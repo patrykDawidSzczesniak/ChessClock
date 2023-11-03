@@ -1,4 +1,5 @@
 # ChessClock
+https://patrykdawidszczesniak.github.io/ChessClock/
 A basic chess clock.
 
 Font used for clock display: https://www.1001fonts.com/digital-7-font.html
