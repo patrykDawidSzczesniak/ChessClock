@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessClock</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./digital-7.ttf">
+</head>
+<body>
+<div class="clock-frame">
+    <header>Chess Clock</header>
+    <div class="setTime">
+        <div>   
+            <label id="enterTime" class="enterTime">Enter time in minutes:</label>
+            <input type="text" class="timeEnter">
+        </div>
+        <button class="btn submit">Submit</button>
+    </div>
+    <div class="display">
+        <div class="timer" id="firstTimer">
+        <p class="playerTag">FIRST PLAYER</p>
+        <p class="time firstTime">00:00:00</p>
+        </div>
+        <div class="timer" id="secondTimer">
+        <p class="playerTag">SECOND PLAYER</p>
+        <p class="time secondTime">00:00:00</p>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="btn start">|></button>
+        <button class="btn change">Change</button>
+        <button class="btn stop">||</button>
+    </div>
+</div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

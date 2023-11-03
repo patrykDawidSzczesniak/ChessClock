@@ -1,0 +1,115 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.clock-frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4e2e18;
+    width: 800px;
+    height: 330px;
+    border-radius: 7px;
+    z-index: 1;
+}
+
+header{
+    margin-top: 20px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    width: 750px;
+    height: 100px;
+    background-color: #0c0d0e;
+    margin: 10px 0px 40px 0px;
+    border-width: 5px;
+    border-style: double;
+    border-color: rgb(34, 37, 39);
+}
+
+@font-face{
+    font-family: digital;
+    src: url(./digital-7.ttf);
+}
+
+p{
+    font-family: "digital";
+    color: rgb(69, 235, 63);
+}
+
+.playerTag{
+    font-size: 20px;
+    margin-bottom: 0px;
+    font-weight: 600;
+}
+
+.time{
+    font-size: 50px;
+    margin-top: 0px;
+    min-width: 159px;
+}
+
+.buttons{
+    background-color: black;
+    display: flex;
+    width: 800px;
+    height: 30px;
+    justify-content: center;
+    padding: 5px 0px;
+    border-radius: 4px;
+    border-style: double;
+    border-width: 2px;
+    border-color: rgb(77, 77, 77);
+}
+
+.buttons .btn{
+    background-color: rgb(32, 32, 32);
+    color: whitesmoke;
+    width: 200px;
+}
+
+.timeEnter{
+    max-width: 30px;
+}
+
+.setTime{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
+    display: flex;
+    width: 300px;
+    height: 20px;
+    padding: 5px 250px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: double;
+    border-color: rgb(77, 77, 77);
+}
+
+.submit{
+    background-color: rgb(32, 32, 32);
+    color: whitesmoke;
+    width: 100px;
+}
+
+.error{
+    background-color: #d30f0f;
+}
+
+.approve{
+    background-color: rgb(28, 199, 28);
+}
+
+.notCurrentPlayer{
+    opacity: 30%;
+}
