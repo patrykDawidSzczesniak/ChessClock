@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    let valueEntered;
-    let firstHours;
-    let firstMinutes;
-    let firstSeconds;
-    let secondHours;
-    let secondMinutes;
-    let secondSeconds;
+    let valueEntered = 0;
+    let firstHours = 0;
+    let firstMinutes = 0;
+    let firstSeconds = 0;
+    let secondHours = 0;
+    let secondMinutes = 0;
+    let secondSeconds = 0;
     let playerID = "first";
     let interval1;
     let interval2;
@@ -36,6 +36,7 @@ $(document).ready(function() {
             secondMinutes = m;
             secondSeconds = s;
             $(".time").text(fixedTime(h,m,s));
+            clickCount = 0;
         } else {
             $(".time").text("00:00:00");
             alert("Please enter an integer value!");
@@ -56,9 +57,7 @@ $(document).ready(function() {
                     countDown(interval2);
                 }, 1000);
             }
-        } else {
-            null;
-        }
+        }  
     });
 
     $(".stop").click(function(){
@@ -70,12 +69,26 @@ $(document).ready(function() {
     $(".change").on("click keydown",function(e){
         if (e.type === "click" || (e.type === "keydown" && e.keyCode === '32')){
             if (playerID === "first"){
+                
                 playerID = "second";
+
+                $("#firstTimer").addClass("notCurrentPlayer");
+                $("#" + playerID + "Timer").removeClass("notCurrentPlayer");
+                $("#firstTicker").addClass("tickerDown");
+                $("#" + playerID + "Ticker").removeClass("tickerDown");
+
                 firstHours = parseInt($(".firstTime").text().split(":")[0]);
                 firstMinutes = parseInt($(".firstTime").text().split(":")[1]);
                 firstSeconds = parseInt($(".firstTime").text().split(":")[2]);
             } else {
+                
                 playerID = "first";
+
+                $("#secondTimer").addClass("notCurrentPlayer");
+                $("#" + playerID + "Timer").removeClass("notCurrentPlayer");
+                $("#secondTicker").addClass("tickerDown");
+                $("#" + playerID + "Ticker").removeClass("tickerDown");
+
                 secondHours = parseInt($(".secondTime").text().split(":")[0]);
                 secondMinutes = parseInt($(".secondTime").text().split(":")[1]);
                 secondSeconds = parseInt($(".secondTime").text().split(":")[2]);
@@ -102,14 +115,10 @@ $(document).ready(function() {
             hours = firstHours;
             minutes = firstMinutes;
             seconds = firstSeconds;
-            $("#secondTimer").addClass("notCurrentPlayer");
-            $("#" + playerID + "Timer").removeClass("notCurrentPlayer");
         } else {
             hours = secondHours;
             minutes = secondMinutes;
             seconds = secondSeconds;
-            $("#firstTimer").addClass("notCurrentPlayer");
-            $("#" + playerID + "Timer").removeClass("notCurrentPlayer");
         }
         if (hours === 0 && minutes === 0 && seconds === 0) {
             clearInterval(intervalId);
