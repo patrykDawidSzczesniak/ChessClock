@@ -6,26 +6,19 @@ $(document).ready(function() {
     let secondHours = 0;
     let secondMinutes = 0;
     let secondSeconds = 0;
-    let playerID = "first";
+    let playerID = "second";
     let interval1;
     let interval2;
     let clickCount = 0;
+    let otherClickCount = 0;
     var tic = new Audio("./tic.mp3");
     
     $(".timeEnter").keyup(function(){
         valueEntered = Number($(".timeEnter").val());
-        if ($.isNumeric(valueEntered) && Math.floor(valueEntered) == valueEntered) {
-            $(".timeEnter").addClass("approve");
-        }
-        if (!$(".timeEnter").val()){
-            $(".timeEnter").removeClass("approve error")
-        } else {
-            $(".timeEnter").addClass("error");
-        }
     });
 
     $(".submit").click(function(){
-        if ($.isNumeric(valueEntered) && Math.floor(valueEntered) == valueEntered){
+        if ($.isNumeric(valueEntered) && Math.floor(valueEntered) == valueEntered && Math.floor(valueEntered) > 0){
             let h = Math.floor(valueEntered / 60);
             let m = valueEntered % 60;
             let s = 0;
@@ -45,6 +38,7 @@ $(document).ready(function() {
 
     $(".start").click(function (){
         clickCount += 1;
+        otherClickCount += 1;
         if (clickCount === 1){
             if (playerID === "first"){
                 clearInterval(interval2);
@@ -57,7 +51,10 @@ $(document).ready(function() {
                     countDown(interval2);
                 }, 1000);
             }
-        }  
+        } 
+        if (otherClickCount === 1){
+            change();
+        }
     });
 
     $(".stop").click(function(){
@@ -66,10 +63,14 @@ $(document).ready(function() {
         clickCount = 0;
     });
 
-    $(".change").on("click keydown",function(e){
-        if (e.type === "click" || (e.type === "keydown" && e.keyCode === '32')){
+    $(".change").click(function(){
+        if (firstMinutes > 0 && clickCount > 0){
+            change();
+        }
+    });
+
+    function change(){
             if (playerID === "first"){
-                
                 playerID = "second";
 
                 $("#firstTimer").addClass("notCurrentPlayer");
@@ -81,7 +82,6 @@ $(document).ready(function() {
                 firstMinutes = parseInt($(".firstTime").text().split(":")[1]);
                 firstSeconds = parseInt($(".firstTime").text().split(":")[2]);
             } else {
-                
                 playerID = "first";
 
                 $("#secondTimer").addClass("notCurrentPlayer");
@@ -92,9 +92,8 @@ $(document).ready(function() {
                 secondHours = parseInt($(".secondTime").text().split(":")[0]);
                 secondMinutes = parseInt($(".secondTime").text().split(":")[1]);
                 secondSeconds = parseInt($(".secondTime").text().split(":")[2]);
-            }
         };
-    });
+    };
 
     function fixedTime(hours, minutes, seconds) {
         if (hours < 10){

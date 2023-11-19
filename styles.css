@@ -1,5 +1,6 @@
 body{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -7,49 +8,9 @@ body{
     margin: 0px;
 }
 
-.navbar{
-    background-color: #4e2e18;
-    width: 1300px;
-    height: 50px;
-    z-index: 3;
-    position: fixed;
-    align-self: flex-start;
-    margin-top: 10px;
-}
-
-.navbar-options{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-}
-
-.dropdown-content{
-    display: none;
-    position: absolute;
-    color: black;
-    background-color: antiquewhite;
-    width: auto;
-    z-index: 4;
-}
-
-.dropdown-content p {
-    color: black;
-    display: block;
-}
-
-.option{
-    background-color: transparent;
-    border: none;
-    font-size: large;
-    font-weight: 600;
-}
-
-.frame-option:hover .frame-option > .dropdown-content {display: block;}
-
-.navbar-options{
-    width: auto;
-    margin: 10px;
+.top-space{
+    height: 100%;
+    width: 100%;
 }
 
 .tickers{
@@ -214,11 +175,10 @@ header{
     margin-top: 30px;
 }
 
-
-/*.table{
-    position: absolute;
-    height: 100px;
+.table{
+    height: 100%;
     width: 100%;
+    padding-top: 10px;
     z-index: -3;
     background-color: #412614;
-}*/
+}
